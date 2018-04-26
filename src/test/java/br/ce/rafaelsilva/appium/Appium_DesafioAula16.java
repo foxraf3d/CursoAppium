@@ -1,5 +1,6 @@
 package br.ce.rafaelsilva.appium;
 
+import br.ce.rafaelsilva.appium.core.DSL;
 import br.ce.rafaelsilva.appium.core.DriverFactory;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
@@ -11,16 +12,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class Appium_DesafioAula16 {
 
-
-    private AndroidDriver driver;
+    private DSL dsl = new DSL();
 
     @Before
     public void SetUp(){
-        driver = DriverFactory.getDriver();
+        dsl.clicarPorTexto("Formulário");
     }
 
     @After
@@ -32,39 +33,28 @@ public class Appium_DesafioAula16 {
     @Test
     public void NovoMetodoAppiumAula16(){
 
-        //Acessar o formulário
-        driver.findElement(By.xpath("//*[@text='Formulário']")).click();
-
         //Preencher campo Nome
-        driver.findElement(MobileBy.AccessibilityId("nome")).sendKeys("Rafael Simplício");
+        dsl.escrever(By.xpath("//*[@text='Formulário']"), "Rafael Simplício");
 
         //Selecionar valor para combo
-        driver.findElement(MobileBy.AccessibilityId("console")).click();
-        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Nintendo Switch']")).click();
+        dsl.clicar(MobileBy.AccessibilityId("console"));
+        dsl.clicarPorTexto("Nintendo Switch");
 
         //Selecionar checkbox para true
-        MobileElement checkbox = (MobileElement) driver.findElement(MobileBy.AccessibilityId("check"));
-        checkbox.click();
-        String ticado = checkbox.getAttribute("checked");
+        dsl.clicar(MobileBy.AccessibilityId("check"));
 
         //Selecionar switch para false
-        MobileElement deslize = (MobileElement) driver.findElement(MobileBy.AccessibilityId("switch"));
-        deslize.click();
-        String dedar = deslize.getAttribute("checked");
+        dsl.clicar(MobileBy.AccessibilityId("switch"));
+
 
         //Salvar as informações
-        driver.findElement(By.xpath("//*[@text='SALVAR']")).click();
+        dsl.clicar(By.xpath("//*[@text='SALVAR']"));
 
         //Validar informações dos campos
-        WebElement textoNome = driver.findElement(By.xpath("//android.widget.TextView[@text='Nome: Rafael Simplício']"));
-        assertEquals("Nome: Rafael Simplício", textoNome.getText());
-
-        WebElement textoConsole = driver.findElement(By.xpath("//android.widget.TextView[@text='Console: switch']"));
-        assertEquals("Console: switch", textoConsole.getText());
-
-        assertTrue(dedar.equals("false"));
-
-        assertTrue(ticado.equals("true"));
+        assertEquals("Nome: Rafael Simplício", dsl.obterTexto(By.xpath("//android.widget.TextView[@text='Nome: Rafael Simplício']")));
+        assertEquals("Console: switch", dsl.obterTexto(By.xpath("//android.widget.TextView[@text='Console: switch']")));
+        assertFalse(dsl.isCheckMArcado(MobileBy.AccessibilityId("check")));
+        assertTrue(dsl.isCheckMArcado(MobileBy.AccessibilityId("switch")));
 
     }
 
