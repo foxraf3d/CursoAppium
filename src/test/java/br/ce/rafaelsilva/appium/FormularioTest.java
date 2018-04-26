@@ -22,14 +22,11 @@ import static org.junit.Assert.*;
 
 public class FormularioTest {
 
-    private AndroidDriver driver;
     private DSL dsl = new DSL();
 
     @Before
     public void SetUp(){
-        driver = DriverFactory.getDriver();
-        //Selecionar Formulário
-        driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']")).click();
+        dsl.clicarPorTexto("Formulário");
     }
 
     @After

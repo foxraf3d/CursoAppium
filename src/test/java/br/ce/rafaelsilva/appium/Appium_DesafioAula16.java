@@ -29,16 +29,14 @@ public class Appium_DesafioAula16 {
         DriverFactory.killDriver();
     }
 
-
     @Test
     public void NovoMetodoAppiumAula16(){
 
         //Preencher campo Nome
-        dsl.escrever(By.xpath("//*[@text='Formulário']"), "Rafael Simplício");
+        dsl.escrever(MobileBy.AccessibilityId("nome"), "Rafael Simplício");
 
         //Selecionar valor para combo
-        dsl.clicar(MobileBy.AccessibilityId("console"));
-        dsl.clicarPorTexto("Nintendo Switch");
+        dsl.selecionarCombo(MobileBy.AccessibilityId("console"),"Nintendo Switch");
 
         //Selecionar checkbox para true
         dsl.clicar(MobileBy.AccessibilityId("check"));
@@ -53,8 +51,8 @@ public class Appium_DesafioAula16 {
         //Validar informações dos campos
         assertEquals("Nome: Rafael Simplício", dsl.obterTexto(By.xpath("//android.widget.TextView[@text='Nome: Rafael Simplício']")));
         assertEquals("Console: switch", dsl.obterTexto(By.xpath("//android.widget.TextView[@text='Console: switch']")));
-        assertFalse(dsl.isCheckMArcado(MobileBy.AccessibilityId("check")));
-        assertTrue(dsl.isCheckMArcado(MobileBy.AccessibilityId("switch")));
+        assertTrue(dsl.isCheckMArcado(MobileBy.AccessibilityId("check")));
+        assertFalse(dsl.isCheckMArcado(MobileBy.AccessibilityId("switch")));
 
     }
 
