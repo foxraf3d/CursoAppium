@@ -1,5 +1,7 @@
-package br.ce.rafaelsilva.appium;
+package br.ce.rafaelsilva.appium.Test;
 
+import br.ce.rafaelsilva.appium.Page.FormularioPage;
+import br.ce.rafaelsilva.appium.Page.MenuPage;
 import br.ce.rafaelsilva.appium.core.DSL;
 import br.ce.rafaelsilva.appium.core.DriverFactory;
 import io.appium.java_client.MobileBy;
@@ -23,10 +25,12 @@ import static org.junit.Assert.*;
 public class FormularioTest {
 
     private DSL dsl = new DSL();
+    private MenuPage menu = new MenuPage();
+    private FormularioPage page = new FormularioPage();
 
     @Before
     public void SetUp(){
-        dsl.clicarPorTexto("Formulário");
+        menu.acessarFormulário();
     }
 
     @After
@@ -36,11 +40,10 @@ public class FormularioTest {
 
     @Test
     public void devePreencherCampoTexto(){
-        //Escrever nome
-        dsl.escrever(MobileBy.AccessibilityId("nome"), "Rafael Simplício" );
 
-        //Checar nome escrito
-        assertEquals("Rafael Simplício", dsl.obterTexto(MobileBy.AccessibilityId("nome")));
+        page.escreverNome("Rafael Simplício");
+
+        assertEquals("Rafael Simplício", page.obterNome());
     }
 
     @Test

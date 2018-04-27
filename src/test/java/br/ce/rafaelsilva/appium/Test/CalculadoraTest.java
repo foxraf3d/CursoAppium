@@ -1,4 +1,4 @@
-package br.ce.rafaelsilva.appium;
+package br.ce.rafaelsilva.appium.Test;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;

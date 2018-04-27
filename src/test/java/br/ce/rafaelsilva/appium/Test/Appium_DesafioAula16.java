@@ -1,4 +1,4 @@
-package br.ce.rafaelsilva.appium;
+package br.ce.rafaelsilva.appium.Test;
 
 import br.ce.rafaelsilva.appium.core.DSL;
 import br.ce.rafaelsilva.appium.core.DriverFactory;
