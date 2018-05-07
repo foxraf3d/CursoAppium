@@ -13,6 +13,7 @@ public class FormularioPage {
 
     public String obterNome(){
         return dsl.obterTexto(MobileBy.AccessibilityId("nome"));
+
     }
 
     public void selecionarCombo(String valor){
