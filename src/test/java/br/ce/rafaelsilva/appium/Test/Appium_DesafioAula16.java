@@ -1,27 +1,23 @@
 package br.ce.rafaelsilva.appium.Test;
 
-import br.ce.rafaelsilva.appium.core.DSL;
+import br.ce.rafaelsilva.appium.Page.FormularioPage;
+import br.ce.rafaelsilva.appium.Page.MenuPage;
 import br.ce.rafaelsilva.appium.core.DriverFactory;
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class Appium_DesafioAula16 {
 
-    private DSL dsl = new DSL();
+
+    private MenuPage menu = new MenuPage();
+    private FormularioPage page = new FormularioPage();
 
     @Before
     public void SetUp(){
-        dsl.clicarPorTexto("Formulário");
+        menu.acessarFormulário("Formulário");
     }
 
     @After
@@ -33,26 +29,25 @@ public class Appium_DesafioAula16 {
     public void NovoMetodoAppiumAula16(){
 
         //Preencher campo Nome
-        dsl.escrever(MobileBy.AccessibilityId("nome"), "Rafael Simplício");
+        page.escreverNome("Rafael Simplício");
 
         //Selecionar valor para combo
-        dsl.selecionarCombo(MobileBy.AccessibilityId("console"),"Nintendo Switch");
+        page.selecionarCombo("Nintendo Switch");
 
         //Selecionar checkbox para true
-        dsl.clicar(MobileBy.AccessibilityId("check"));
+        page.clicarCheck();
 
         //Selecionar switch para false
-        dsl.clicar(MobileBy.AccessibilityId("switch"));
-
+        page.clicarSwitch();
 
         //Salvar as informações
-        dsl.clicar(By.xpath("//*[@text='SALVAR']"));
+        page.clicarSalvar("SALVAR");
 
         //Validar informações dos campos
-        assertEquals("Nome: Rafael Simplício", dsl.obterTexto(By.xpath("//android.widget.TextView[@text='Nome: Rafael Simplício']")));
-        assertEquals("Console: switch", dsl.obterTexto(By.xpath("//android.widget.TextView[@text='Console: switch']")));
-        assertTrue(dsl.isCheckMArcado(MobileBy.AccessibilityId("check")));
-        assertFalse(dsl.isCheckMArcado(MobileBy.AccessibilityId("switch")));
+        assertEquals("Nome: Rafael Simplício", page.obterNomeCadastrado());
+        assertEquals("Console: switch", page.obterConsoleCadastrado());
+        assertTrue(page.isCheckMarcado());
+        assertFalse(page.isSwitchMarcado());
 
     }
 

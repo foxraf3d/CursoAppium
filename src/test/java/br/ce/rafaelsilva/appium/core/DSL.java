@@ -32,4 +32,8 @@ public class DSL {
     public boolean isCheckMArcado(By by){
         return getDriver().findElement(by).getAttribute("checked").equals("true");
    }
+
+    public boolean isSwitchMArcado(By by){
+        return getDriver().findElement(by).getAttribute("checked").equals("true");
+    }
 }

@@ -6,8 +6,8 @@ public class MenuPage {
 
     private DSL dsl = new DSL();
 
-    public void acessarFormulário(){
-        dsl.clicarPorTexto("Formulário");
+    public void acessarFormulário(String valor){
+        dsl.clicarPorTexto(valor);
     }
 
 }
