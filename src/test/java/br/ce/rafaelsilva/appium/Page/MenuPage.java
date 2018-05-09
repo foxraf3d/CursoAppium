@@ -1,13 +1,13 @@
 package br.ce.rafaelsilva.appium.Page;
 
-import br.ce.rafaelsilva.appium.core.DSL;
+import br.ce.rafaelsilva.appium.core.BasePage;
 
-public class MenuPage {
+public class MenuPage extends BasePage {
 
-    private DSL dsl = new DSL();
+
 
     public void acessarFormulário(String valor){
-        dsl.clicarPorTexto(valor);
+        clicarPorTexto(valor);
     }
 
 }

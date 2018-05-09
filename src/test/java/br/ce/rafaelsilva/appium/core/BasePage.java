@@ -1,12 +1,10 @@
 package br.ce.rafaelsilva.appium.core;
 
-import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 
-import static br.ce.rafaelsilva.appium.core.DriverFactory.*;
-import static org.junit.Assert.assertEquals;
+import static br.ce.rafaelsilva.appium.core.DriverFactory.getDriver;
 
-public class DSL {
+public class BasePage {
 
     public void escrever(By by, String texto){
         getDriver().findElement(by).sendKeys(texto);
@@ -31,9 +29,10 @@ public class DSL {
 
     public boolean isCheckMArcado(By by){
         return getDriver().findElement(by).getAttribute("checked").equals("true");
-   }
+    }
 
     public boolean isSwitchMArcado(By by){
         return getDriver().findElement(by).getAttribute("checked").equals("true");
     }
+
 }
