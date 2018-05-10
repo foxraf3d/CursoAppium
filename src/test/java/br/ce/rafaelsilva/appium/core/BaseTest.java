@@ -6,7 +6,6 @@ import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 
 import java.io.File;
 import java.io.IOException;

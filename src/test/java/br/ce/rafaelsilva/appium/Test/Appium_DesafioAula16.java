@@ -2,6 +2,7 @@ package br.ce.rafaelsilva.appium.Test;
 
 import br.ce.rafaelsilva.appium.Page.FormularioPage;
 import br.ce.rafaelsilva.appium.Page.MenuPage;
+import br.ce.rafaelsilva.appium.core.BaseTest;
 import br.ce.rafaelsilva.appium.core.DriverFactory;
 import org.junit.After;
 import org.junit.Before;
@@ -9,7 +10,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class Appium_DesafioAula16 {
+public class Appium_DesafioAula16 extends BaseTest {
 
 
     private MenuPage menu = new MenuPage();
@@ -18,11 +19,6 @@ public class Appium_DesafioAula16 {
     @Before
     public void SetUp(){
         menu.acessarFormulário("Formulário");
-    }
-
-    @After
-    public void TearDown(){
-        DriverFactory.killDriver();
     }
 
     @Test
