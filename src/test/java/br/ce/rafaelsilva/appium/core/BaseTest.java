@@ -34,4 +34,12 @@ public class BaseTest {
             e.printStackTrace();
         }
     }
+
+    public void esperarCarregar(long time){
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
