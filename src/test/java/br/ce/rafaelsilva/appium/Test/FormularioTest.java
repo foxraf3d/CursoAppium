@@ -4,6 +4,7 @@ import br.ce.rafaelsilva.appium.Page.FormularioPage;
 import br.ce.rafaelsilva.appium.Page.MenuPage;
 import br.ce.rafaelsilva.appium.core.BaseTest;
 import br.ce.rafaelsilva.appium.core.DriverFactory;
+import io.appium.java_client.MobileBy;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,6 +53,16 @@ public class FormularioTest extends BaseTest {
         page.clicarPorTexto("OK");
 
         assertTrue(page.existeElementoPorTexto("20/2/2000"));
+    }
+
+    @Test
+    public void deveAlterarHora(){
+        page.clicarPorTexto("06:00");
+        page.clicar(MobileBy.AccessibilityId("10"));
+        page.clicar(MobileBy.AccessibilityId("40"));
+        page.clicarPorTexto("OK");
+
+        assertTrue(page.existeElementoPorTexto("10:40"));
     }
 
 }
