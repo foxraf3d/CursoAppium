@@ -43,8 +43,8 @@ public class BasePage {
         List<MobileElement> elementos = getDriver().findElements(By.xpath("//*[@text='"+texto+"']"));
         return elementos.size() > 0;
     }
-
+/*
     public void tap(int x, int y){
-        new TouchAction(getDriver()).tap(x,y).perform();
-    }
+        new TouchAction(getDriver()).tap(x, y).perform();
+    }*/
 }

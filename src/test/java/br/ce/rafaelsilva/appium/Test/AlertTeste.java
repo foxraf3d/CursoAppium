@@ -39,6 +39,7 @@ public class AlertTeste extends BaseTest {
         pageAlerta.sair();
     }
 
+    /*
     @Test
     public void deveClicarForaAlerta(){
         //clicar alerta simples
@@ -51,5 +52,6 @@ public class AlertTeste extends BaseTest {
         //verificar que a mensagem não esta presente
         assertFalse(pageAlerta.existeElementoPorTexto("Pode clicar no OK ou fora da caixa para sair"));
     }
+    */
 
 }
