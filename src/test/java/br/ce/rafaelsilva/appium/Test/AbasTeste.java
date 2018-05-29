@@ -5,6 +5,7 @@ import br.ce.rafaelsilva.appium.Page.MenuPage;
 import br.ce.rafaelsilva.appium.core.BaseTest;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 
 public class AbasTeste extends BaseTest {
