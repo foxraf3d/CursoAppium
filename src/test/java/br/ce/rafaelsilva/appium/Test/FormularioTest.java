@@ -8,6 +8,7 @@ import io.appium.java_client.MobileBy;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
 import static org.junit.Assert.*;
 
@@ -68,10 +69,13 @@ public class FormularioTest extends BaseTest {
     @Test
     public void deveInteragirComSeekBar(){
         //Clicar no seekbar
+        page.clicarSeekBar(0.67);
 
         //Salvar
+        page.clicarSalvar("SALVAR");
 
         //Obter o valor
+        assertEquals("Slider: 67",page.obterTexto(By.xpath("//android.widget.TextView[@index='14']")));
     }
 
 }

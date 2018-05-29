@@ -1,8 +1,11 @@
 package br.ce.rafaelsilva.appium.Page;
 
 import br.ce.rafaelsilva.appium.core.BasePage;
+import br.ce.rafaelsilva.appium.core.DriverFactory;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class FormularioPage extends BasePage {
 
@@ -29,6 +32,19 @@ public class FormularioPage extends BasePage {
 
     public void clicarSwitch(){
         clicar(MobileBy.AccessibilityId("switch"));
+    }
+
+    public void clicarSeekBar(double posicao){
+        int delta = 50;
+        WebElement Seek = DriverFactory.getDriver().findElement(MobileBy.AccessibilityId("slid"));
+        int y = Seek.getLocation().y + (Seek.getSize().height / 2);
+        System.out.println(y);
+
+        int xInicial = Seek.getLocation().x + delta;
+        int x = (int) (xInicial + ((Seek.getSize().width - 2*delta)* posicao));
+        System.out.println(x);
+
+        toque(x, y);
     }
 
     public  void clicarSalvar(String label){

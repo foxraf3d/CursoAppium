@@ -2,7 +2,10 @@ package br.ce.rafaelsilva.appium.core;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 
 import java.util.List;
 
@@ -43,8 +46,8 @@ public class BasePage {
         List<MobileElement> elementos = getDriver().findElements(By.xpath("//*[@text='"+texto+"']"));
         return elementos.size() > 0;
     }
-/*
-    public void tap(int x, int y){
-        new TouchAction(getDriver()).tap(x, y).perform();
-    }*/
+
+    public void toque(int x, int y){
+       new TouchAction(getDriver()).tap(PointOption.point(x,y)).perform();
+    }
 }
