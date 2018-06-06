@@ -3,7 +3,6 @@ package br.ce.rafaelsilva.appium.Page;
 import br.ce.rafaelsilva.appium.core.BasePage;
 import br.ce.rafaelsilva.appium.core.DriverFactory;
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 

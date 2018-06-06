@@ -4,9 +4,6 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.touch.TouchActions;
-
 import java.util.List;
 
 import static br.ce.rafaelsilva.appium.core.DriverFactory.getDriver;
