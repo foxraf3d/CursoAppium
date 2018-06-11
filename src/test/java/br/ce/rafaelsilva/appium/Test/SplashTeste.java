@@ -15,7 +15,7 @@ public class SplashTeste extends BaseTest {
     public void deveAquardarSplashSumir(){
 
         //acessar menu splash
-        menu.acessarFormulário("Splash");
+        menu.acessarFormulario("Splash");
 
         //Verificar que o splash esta sendo exibido
         pageSplash.isTelaSplashVisivel();
@@ -24,7 +24,7 @@ public class SplashTeste extends BaseTest {
         pageSplash.aguardarSplashSumir();
 
         //verificar que o formulário esta aparecendo
-        assertTrue(pageSplash.existeElementoPorTexto("Formulário"));
+        assertTrue(pageSplash.existeElementoPorTexto("Formul�rio"));
 
     }
 

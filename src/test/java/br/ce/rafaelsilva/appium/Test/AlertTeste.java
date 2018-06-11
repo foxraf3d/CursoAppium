@@ -16,7 +16,7 @@ public class AlertTeste extends BaseTest {
 
     @Before
     public void Setup(){
-        menu.acessarFormul√°rio("Alertas");
+        menu.acessarFormulario("Alertas");
     }
 
     @Test
@@ -27,7 +27,7 @@ public class AlertTeste extends BaseTest {
 
         //vefificar os textos
         assertEquals("Info", pageAlerta.obterTituloAlerta());
-        assertEquals("Confirma a opera√ß√£o?", pageAlerta.obterMensagemAlerta());
+        assertEquals("Confirma a operaÁ„o?", pageAlerta.obterMensagemAlerta());
 
         //confirmar alerta
         pageAlerta.confirmar();

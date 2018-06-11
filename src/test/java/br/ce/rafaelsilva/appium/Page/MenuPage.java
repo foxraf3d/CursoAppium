@@ -6,7 +6,7 @@ public class MenuPage extends BasePage {
 
 
 
-    public void acessarFormulário(String valor){
+    public void acessarFormulario(String valor){
         clicarPorTexto(valor);
     }
 

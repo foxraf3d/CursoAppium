@@ -16,16 +16,16 @@ public class AbasTeste extends BaseTest {
     @Test
     public void deveInteragirComAbas(){
         //Acessar o menu Abas
-        menu.acessarFormulÃ¡rio("Abas");
+        menu.acessarFormulario("Abas");
 
         //Verificar que esta na Aba 1
-        assertEquals("Este Ã© o conteÃºdo da Aba 1",page.verificaTelaPorTexto(By.xpath("//*[@text='Este Ã© o conteÃºdo da Aba 1']")));
+        assertEquals("Este é o conteúdo da Aba 1",page.verificaTelaPorTexto(By.xpath("//*[@text='Este é o conteúdo da Aba 1']")));
 
         //Acessar a Aba 2
         page.acessarAbaPorTexto("ABA 2");
 
         //Verificar que estÃ¡ na Aba 2
-        assertEquals("Este Ã© o conteÃºdo da Aba 2", page.verificaTelaPorTexto(By.xpath("//*[@text='Este Ã© o conteÃºdo da Aba 2']")));
+        assertEquals("Este é o conteúdo da Aba 2", page.verificaTelaPorTexto(By.xpath("//*[@text='Este é o conteúdo da Aba 2']")));
 
     }
 }

@@ -19,13 +19,13 @@ public class FormularioTest extends BaseTest {
 
     @Before
     public void SetUp(){
-        menu.acessarFormul√°rio("Formul√°rio");
+        menu.acessarFormulario("Formul·rio");
     }
 
     @Test
     public void devePreencherCampoTexto(){
-        page.escreverNome("Rafael Simpl√≠cio");
-        assertEquals("Rafael Simpl√≠cio", page.obterNome());
+        page.escreverNome("Rafael SimplÌcio");
+        assertEquals("Rafael SimplÌcio", page.obterNome());
     }
 
     @Test

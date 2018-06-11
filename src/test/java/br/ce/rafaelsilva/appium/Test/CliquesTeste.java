@@ -13,12 +13,12 @@ public class CliquesTeste extends BaseTest {
     @Test
     public void deveRealizarCliqueLongo(){
         //Acessar menu
-        menu.acessarFormulário("Cliques");
+        menu.acessarFormulario("Cliques");
 
         //Clique longo
         clique.cliqueLongo();
 
         //Verificar o texto
-        assertEquals("", clique.obterTextoCampo());
+        assertEquals("Clique Longo", clique.obterTextoCampo());
     }
 }
