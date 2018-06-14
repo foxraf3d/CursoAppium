@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="CursoAppium" target="1.5" />
+      <module name="CursoAppium" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

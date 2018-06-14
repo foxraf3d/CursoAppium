@@ -27,7 +27,7 @@ public class AlertTeste extends BaseTest {
 
         //vefificar os textos
         assertEquals("Info", pageAlerta.obterTituloAlerta());
-        assertEquals("Confirma a operaÁ„o?", pageAlerta.obterMensagemAlerta());
+        assertEquals("Confirma a opera√ß√£o?", pageAlerta.obterMensagemAlerta());
 
         //confirmar alerta
         pageAlerta.confirmar();
@@ -39,7 +39,7 @@ public class AlertTeste extends BaseTest {
         pageAlerta.sair();
     }
 
-    /*
+
     @Test
     public void deveClicarForaAlerta(){
         //clicar alerta simples
@@ -52,6 +52,6 @@ public class AlertTeste extends BaseTest {
         //verificar que a mensagem n√£o esta presente
         assertFalse(pageAlerta.existeElementoPorTexto("Pode clicar no OK ou fora da caixa para sair"));
     }
-    */
+
 
 }
