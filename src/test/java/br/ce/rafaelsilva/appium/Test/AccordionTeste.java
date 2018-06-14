@@ -18,11 +18,11 @@ public class AccordionTeste extends BaseTest {
         menu.acessarFormulario("Accordion");
 
         //Clicar na op√ß√£o 1
-        page.selecionarOp1("OpÁ„o 1");
+        page.selecionarOp1("Op√ß√£o 1");
 
         //Verificar texto op√ß√£o 1
         esperarCarregar(1000);
-        assertEquals("Esta È a descriÁ„o da opÁ„o 1", page.obterValorOp1());
+        assertEquals("Esta √© a descri√ß√£o da op√ß√£o 1", page.obterValorOp1());
 
     }
 }

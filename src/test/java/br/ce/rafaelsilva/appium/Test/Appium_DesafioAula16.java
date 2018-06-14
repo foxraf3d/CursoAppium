@@ -27,14 +27,14 @@ public class Appium_DesafioAula16 extends BaseTest {
 
     @Before
     public void SetUp(){
-        menu.acessarFormulario("Formul·rio");
+        menu.acessarFormulario("Formul√°rio");
     }
 
     @Test
     public void NovoMetodoAppiumAula16(){
 
         //Preencher campo Nome
-        page.escreverNome("Rafael SimplÌcio");
+        page.escreverNome("Rafael Simpl√≠cio");
 
         //Selecionar valor para combo
         page.selecionarCombo("Nintendo Switch");
@@ -49,7 +49,7 @@ public class Appium_DesafioAula16 extends BaseTest {
         page.clicarSalvar("SALVAR");
 
         //Validar informa√ß√µes dos campos
-        assertEquals("Nome: Rafael SimplÌcio", page.obterNomeCadastrado());
+        assertEquals("Nome: Rafael Simpl√≠cio", page.obterNomeCadastrado());
         assertEquals("Console: switch", page.obterConsoleCadastrado());
         assertTrue(page.isCheckMarcado());
         assertFalse(page.isSwitchMarcado());
@@ -61,7 +61,7 @@ public class Appium_DesafioAula16 extends BaseTest {
     public void salvarDemorado(){
 
         //Preencher campo Nome
-        page.escreverNome("Rafael SimplÌcio");
+        page.escreverNome("Rafael Simpl√≠cio");
 
         //Selecionar valor para combo
         page.selecionarCombo("Nintendo Switch");
@@ -78,10 +78,10 @@ public class Appium_DesafioAula16 extends BaseTest {
         page.clicarSalvar("SALVAR DEMORADO");
 
         WebDriverWait espera = new WebDriverWait(DriverFactory.getDriver(), 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Nome: Rafael SimplÌcio']")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Nome: Rafael Simpl√≠cio']")));
 
         //Validar informa√ß√µes dos campos
-        assertEquals("Nome: Rafael SimplÌcio", page.obterNomeCadastrado());
+        assertEquals("Nome: Rafael Simpl√≠cio", page.obterNomeCadastrado());
         assertEquals("Console: switch", page.obterConsoleCadastrado());
         assertTrue(page.isCheckMarcado());
         assertFalse(page.isSwitchMarcado());

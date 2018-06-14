@@ -24,7 +24,7 @@ public class SplashTeste extends BaseTest {
         pageSplash.aguardarSplashSumir();
 
         //verificar que o formulário esta aparecendo
-        assertTrue(pageSplash.existeElementoPorTexto("Formul�rio"));
+        assertTrue(pageSplash.existeElementoPorTexto("Formulário"));
 
     }
 

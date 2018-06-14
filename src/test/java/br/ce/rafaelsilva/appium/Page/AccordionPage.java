@@ -10,7 +10,7 @@ public class AccordionPage extends BasePage {
     }
 
     public String obterValorOp1(){
-        return obterTexto(By.xpath("//*[@text='Opção 1']/../..//following-sibling::android.view.ViewGroup//android.widget.TextView"));
+        return obterTexto(By.xpath("//*[@text='OpÃ§Ã£o 1']/../..//following-sibling::android.view.ViewGroup//android.widget.TextView"));
     }
 
 }
