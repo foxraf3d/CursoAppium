@@ -31,7 +31,7 @@ public class CliquesTeste extends BaseTest {
         //Clique duplo
         clique.clicarPorTexto("Clique duplo");
         clique.clicarPorTexto("Clique duplo");
-        
+
         //Verificar o texto
         assertEquals("Duplo Clique", clique.obterTextoCampo());
     }

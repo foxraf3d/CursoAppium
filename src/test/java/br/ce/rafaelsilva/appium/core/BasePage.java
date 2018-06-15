@@ -2,8 +2,12 @@ package br.ce.rafaelsilva.appium.core;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+
+import java.time.Duration;
 import java.util.List;
 
 import static br.ce.rafaelsilva.appium.core.DriverFactory.getDriver;
@@ -46,5 +50,24 @@ public class BasePage {
 
     public void toque(int x, int y){
        new TouchAction(getDriver()).tap(PointOption.point(x,y)).perform();
+    }
+
+    public void scroll(double inicio, double fim){
+        Dimension size = getDriver().manage().window().getSize();
+        int x = size.width / 2;
+
+        int start_y = (int) (size.height*inicio);
+        int end_y = (int) (size.height*fim);
+
+        PointOption point = new PointOption();
+
+
+        WaitOptions espera = new WaitOptions();
+
+        new TouchAction(getDriver()).press(point.withCoordinates(x, start_y))
+                .waitAction( espera.withDuration(Duration.ofMillis(500)))
+                .moveTo(point.withCoordinates(x, end_y))
+                .release()
+                .perform();
     }
 }
