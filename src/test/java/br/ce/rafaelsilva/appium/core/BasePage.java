@@ -49,24 +49,39 @@ public class BasePage {
     }
 
     public void toque(int x, int y){
-       new TouchAction(getDriver()).tap(PointOption.point(x,y)).perform();
+        new TouchAction(getDriver()).tap(PointOption.point(x,y)).perform();
     }
 
     public void scroll(double inicio, double fim){
         Dimension size = getDriver().manage().window().getSize();
-        int x = size.width / 2;
+        int x = size.width/2;
 
         int start_y = (int) (size.height*inicio);
         int end_y = (int) (size.height*fim);
 
         PointOption point = new PointOption();
-
-
         WaitOptions espera = new WaitOptions();
 
         new TouchAction(getDriver()).press(point.withCoordinates(x, start_y))
                 .waitAction( espera.withDuration(Duration.ofMillis(500)))
                 .moveTo(point.withCoordinates(x, end_y))
+                .release()
+                .perform();
+    }
+
+    public void swipe(double inicio, double fim){
+        Dimension size = getDriver().manage().window().getSize();
+        int y = size.height/2;
+
+        int start_x = (int) (size.width * inicio);
+        int end_x = (int) (size.width * fim);
+
+        PointOption point = new PointOption();
+        WaitOptions espera = new WaitOptions();
+
+        new TouchAction(getDriver()).press(point.withCoordinates(start_x, y))
+                .waitAction( espera.withDuration(Duration.ofMillis(500)))
+                .moveTo(point.withCoordinates(end_x, y))
                 .release()
                 .perform();
     }
