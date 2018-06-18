@@ -3,6 +3,7 @@ package br.ce.rafaelsilva.appium.Test;
 import br.ce.rafaelsilva.appium.Page.MenuPage;
 import br.ce.rafaelsilva.appium.core.BaseTest;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
@@ -12,10 +13,16 @@ public class SwipeTeste extends BaseTest {
 
     private MenuPage menu = new MenuPage();
 
-    @Test
-    public void deveRealizarSwipe(){
+
+    @Before
+    public void Setup(){
         //acessar menu
         menu.acessarFormulario("Swipe");
+    }
+
+    @Test
+    public void deveRealizarSwipe(){
+
         //verificar texto "a esquerda"
         assertEquals("a esquerda", menu.obterTexto(By.xpath("//android.widget.TextView[@text='a esquerda']")));
         //swipe para direita
@@ -33,5 +40,7 @@ public class SwipeTeste extends BaseTest {
         //verificar texto "a esquerda"
         assertEquals("a esquerda", menu.obterTexto(By.xpath("//android.widget.TextView[@text='a esquerda']")));
     }
+
+
 
 }
