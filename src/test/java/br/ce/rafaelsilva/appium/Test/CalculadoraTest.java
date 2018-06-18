@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class CalculadoraTest {
 
-    @Test
+    //@Test
     public void deveSomarDoisValores() throws MalformedURLException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
