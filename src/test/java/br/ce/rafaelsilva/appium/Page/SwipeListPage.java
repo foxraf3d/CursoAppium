@@ -1,6 +1,7 @@
 package br.ce.rafaelsilva.appium.Page;
 
 import br.ce.rafaelsilva.appium.core.BasePage;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
@@ -13,25 +14,14 @@ import static br.ce.rafaelsilva.appium.core.DriverFactory.getDriver;
 
 public class SwipeListPage extends BasePage {
 
-    public void swipeLeft(String path, double inicio, double fim){
+    public void swipeLeft(String opcao){
 
-        Dimension sizeElement = getDriver().findElement(By.xpath(path)).getSize();
+        swipeElement((MobileElement) getDriver().findElement(By.xpath("//*[@text='"+opcao+"']/..")),0.1, 0.9);
+    }
 
-        int y = sizeElement.height/2;
+    public void swipeRight(String opcao){
 
-        int start_x = (int) (sizeElement.width*inicio);
-        int end_x = (int) (sizeElement.width*fim);
-
-        PointOption point = new PointOption();
-        WaitOptions espera = new WaitOptions();
-
-        new TouchAction(getDriver()).press(point.withCoordinates(start_x, y))
-                .waitAction( espera.withDuration(Duration.ofMillis(500)))
-                .moveTo(point.withCoordinates(end_x, y))
-                .release()
-                .perform();
-
-
+        swipeElement((MobileElement) getDriver().findElement(By.xpath("//*[@text='"+opcao+"']/..")),0.9, 0.1);
     }
 
     public void clicarBotaoMais(){

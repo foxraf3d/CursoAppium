@@ -20,8 +20,7 @@ public class SwipeListTeste extends BaseTest {
         esperarCarregar(1000);
 
         //op1 para esquerda
-        String path = "//android.view.ViewGroup[@index='0']//android.view.ViewGroup[@index='0']/android.view.ViewGroup[@index='1']/android.view.ViewGroup[@index='0']";
-        page.swipeLeft(path,0.9, 0.1);
+        page.swipeRight("Opção 1");
 
         //op1 +
         page.clicarBotaoMais();
@@ -30,17 +29,19 @@ public class SwipeListTeste extends BaseTest {
         assertEquals("Opção 1 (+)", menu.obterTexto(By.xpath("//android.widget.TextView[@text='Opção 1 (+)']")));
 
         //op4 para esquerda
-        path = "//android.view.ViewGroup[@index='0']//android.view.ViewGroup[@index='3']/android.view.ViewGroup[@index='1']/android.view.ViewGroup[@index='0']";
-        page.swipeLeft(path, 0.9, 0.1);
+        page.swipeRight("Opção 4");
 
         //op4 -
+        page.clicarPorTexto("(-)");
 
         //Verficar op4-
+        assertEquals("Opção 4 (-)", menu.obterTexto(By.xpath("//android.widget.TextView[@text='Opção 4 (-)']")));
 
         //op5 para direita
+        page.swipeLeft("Opção 5 (-)");
 
         //verificar op5
-
+        assertEquals("Opção 5", menu.obterTexto(By.xpath("//android.widget.TextView[@text='Opção 5']")));
 
     }
 
