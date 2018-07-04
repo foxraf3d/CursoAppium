@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
 public class OpcaoEscondidaTeste extends BaseTest {
 
     private MenuPage menu = new MenuPage();
-    private OpcaoEscondidaTestePage opcaoEscondita = new OpcaoEscondidaTestePage();
+    private OpcaoEscondidaTestePage opcaoEscondida = new OpcaoEscondidaTestePage();
 
     @Test
     public void deveEndontrarOpcaoEscondida() {
@@ -21,7 +21,7 @@ public class OpcaoEscondidaTeste extends BaseTest {
         //Verificar mansagem
         assertEquals("Você achou essa opção", menu.obterTexto(By.id("android:id/message")));
         //sair
-        opcaoEscondita.clicarMSGSucesso();
+        opcaoEscondida.clicarMSGSucesso();
     }
 
 }
