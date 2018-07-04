@@ -19,13 +19,13 @@ public class FormularioTest extends BaseTest {
 
     @Before
     public void SetUp(){
-        menu.acessarFormulario("Formul·rio");
+        menu.acessarFormulario("Formul√°rio");
     }
 
     @Test
     public void devePreencherCampoTexto(){
-        page.escreverNome("Rafael SimplÌcio");
-        assertEquals("Rafael SimplÌcio", page.obterNome());
+        page.escreverNome("Rafael Simpl√≠cio");
+        assertEquals("Rafael Simpl√≠cio", page.obterNome());
     }
 
     @Test
@@ -75,7 +75,7 @@ public class FormularioTest extends BaseTest {
         page.clicarSalvar("SALVAR");
 
         //Obter o valor
-        assertEquals("Slider: 67",page.obterTexto(By.xpath("//android.widget.TextView[@index='14']")));
+        assertEquals("Slider: 66",page.obterTexto(By.xpath("//android.widget.TextView[@index='14']")));
     }
 
 }
