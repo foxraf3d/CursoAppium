@@ -62,6 +62,8 @@ public class BasePage {
         PointOption point = new PointOption();
         WaitOptions espera = new WaitOptions();
 
+        new BaseTest().esperarCarregar(2000);
+
         new TouchAction(getDriver()).press(point.withCoordinates(x, start_y))
                 .waitAction( espera.withDuration(Duration.ofMillis(500)))
                 .moveTo(point.withCoordinates(x, end_y))
