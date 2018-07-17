@@ -1,10 +1,10 @@
 package br.ce.rafaelsilva.appium.Test;
 
-import br.ce.rafaelsilva.appium.Page.MenuPage;
-import br.ce.rafaelsilva.appium.Page.SBContasPage;
-import br.ce.rafaelsilva.appium.Page.SBLoginPage;
-import br.ce.rafaelsilva.appium.Page.SBNavegarAbasPage;
+import br.ce.rafaelsilva.appium.Page.*;
 import br.ce.rafaelsilva.appium.core.BaseTest;
+import static br.ce.rafaelsilva.appium.core.Mensagens.*;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -24,6 +24,8 @@ public class SBTeste extends BaseTest {
     private SBLoginPage loginPage = new SBLoginPage();
     private SBNavegarAbasPage abasPage = new SBNavegarAbasPage();
     private SBContasPage conta = new SBContasPage();
+    private SBMovPage movPage = new SBMovPage();
+    private SBHomePage homePage = new SBHomePage();
 
     @Before
     public void Setup() {
@@ -33,13 +35,19 @@ public class SBTeste extends BaseTest {
         loginPage.entrar();
     }
 
+    @After
+    public void tearDown(){
+        abasPage.acessarAbasSBNativo("HOME");
+        homePage.resetarBancoDeDados();
+    }
+
     //1 - Inserir Conta
     @Test
     public void inserirConta_ComSucesso(){
         abasPage.acessarAbasSBNativo("CONTAS");
         conta.inserirConta("Conta Nova");
         conta.salvarConta();
-        assertEquals("Conta adicionada com sucesso",conta.obterTexto(By.xpath("//android.widget.TextView[@text='Conta adicionada com sucesso']")));
+        assertEquals((MSG.SUCESSO_INSERIRCONTA).toString(), conta.obterTexto(By.xpath("//android.widget.TextView[@text='Conta adicionada com sucesso']")));
     }
 
     @Test
@@ -51,7 +59,7 @@ public class SBTeste extends BaseTest {
         conta.inserirConta("Conta para Exclusão");
         conta.salvarConta();
 
-        assertEquals("Problemas de comunicação",conta.obterTexto(By.xpath("//android.widget.TextView[@text='Problemas de comunicação']")));
+        assertEquals((MSG.FALHA_INSERIRCONTA).toString(),conta.obterTexto(By.xpath("//android.widget.TextView[@text='Problemas de comunicação']")));
     }
 
     //2 - Excluir Conta
@@ -63,7 +71,7 @@ public class SBTeste extends BaseTest {
         esperarCarregar(1000);
         conta.cliqueLongoConta("Conta para Exclusão");
         conta.excluirConta();
-        assertEquals("Conta excluída com sucesso",conta.obterTexto(By.xpath("//android.widget.TextView[@text='Conta excluída com sucesso']")));
+        assertEquals((MSG.SUCESSO_EXCLUIRCONTA).toString(),conta.obterTexto(By.xpath("//android.widget.TextView[@text='Conta excluída com sucesso']")));
     }
 
     @Test
@@ -72,11 +80,55 @@ public class SBTeste extends BaseTest {
         esperarCarregar(1000);
         conta.cliqueLongoConta("Conta para movimentacoes");
         conta.excluirConta();
-        assertEquals("Conta em uso nas movimentações",conta.obterTexto(By.xpath("//android.widget.TextView[@text='Conta em uso nas movimentações']")));
+        assertEquals((MSG.FALHA_EXCLUIRCONTA_CONTA_EM_USO).toString(),conta.obterTexto(By.xpath("//android.widget.TextView[@text='Conta em uso nas movimentações']")));
     }
 
     //3 - Validações da Movimentação
+    @Test
+    public void realizarMovimentacaoConta_ComSucesso(){
+        inseriContaParaTeste("Teste de Movimentação");
+        abasPage.acessarAbasSBNativo("MOV...");
+        movPage.combosMovimentacao("Receita", "Despesa");
+        movPage.informaSwitchPagamento_Pago();
+        movPage.dataMovimentacao(0);
+        movPage.okDatas();
+        movPage.dataPagamento(2);
+        movPage.okDatas();
+        movPage.preencheDescricao("Conta de Luz");
+        movPage.preencheInterassado("Rafael");
+        movPage.preencheValor("250,00");
+        movPage.combosMovimentacao("Selecione uma conta...", "Teste de Movimentação");
+        movPage.salvarMovimentacao();
+
+        assertEquals((MSG.SUCESSO_MOVIMENTACAO).toString(), movPage.obterTexto(By.xpath("//android.widget.TextView[@text='Movimentação cadastrada com sucesso']")));
+    }
+
+    @Test
+    public void realizarMovimentacaoConta_ComFalha(){
+        inseriContaParaTeste("Teste de Falha");
+        abasPage.acessarAbasSBNativo("MOV...");
+        movPage.combosMovimentacao("Receita", "Despesa");
+        movPage.informaSwitchPagamento_Pago();
+        movPage.dataMovimentacao(2);
+        movPage.okDatas();
+        movPage.dataPagamento(2);
+        movPage.okDatas();
+        movPage.preencheDescricao("Conta de Luz");
+        movPage.preencheInterassado("Rafael");
+        movPage.preencheValor("250,00");
+        movPage.combosMovimentacao("Selecione uma conta...", "Teste de Falha");
+        movPage.salvarMovimentacao();
+
+        assertEquals((MSG.FALHA_MOVIMENTACAO_DATA).toString(), movPage.obterTexto(By.xpath("//android.widget.TextView[@text='Data da Movimentação deve ser menor ou igual à data atual']")));
+    }
 
 
+
+
+    private void inseriContaParaTeste(String nomeConta){
+        abasPage.acessarAbasSBNativo("CONTAS");
+        conta.inserirConta(nomeConta);
+        conta.salvarConta();
+    }
 
 }
