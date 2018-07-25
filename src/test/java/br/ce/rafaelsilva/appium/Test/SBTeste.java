@@ -26,6 +26,7 @@ public class SBTeste extends BaseTest {
     private SBContasPage conta = new SBContasPage();
     private SBMovPage movPage = new SBMovPage();
     private SBHomePage homePage = new SBHomePage();
+    private  SBResumoPage resumo = new SBResumoPage();
 
     @Before
     public void Setup() {
@@ -101,6 +102,7 @@ public class SBTeste extends BaseTest {
         movPage.salvarMovimentacao();
 
         assertEquals((MSG.SUCESSO_MOVIMENTACAO).toString(), movPage.obterTexto(By.xpath("//android.widget.TextView[@text='Movimentação cadastrada com sucesso']")));
+
     }
 
     @Test
@@ -122,6 +124,17 @@ public class SBTeste extends BaseTest {
         assertEquals((MSG.FALHA_MOVIMENTACAO_DATA).toString(), movPage.obterTexto(By.xpath("//android.widget.TextView[@text='Data da Movimentação deve ser menor ou igual à data atual']")));
     }
 
+    //4 - Exclusão  + saldo
+    @Test
+    public void excluiMovimentacaoResumo(){
+        inseriContaParaTeste("Conta Teste");
+        abasPage.acessarAbasSBNativo("RESUMO");
+        resumo.swipeMovimentacaoResumo();
+        resumo.deletarResumo();
+        resumo.atualizar();
+
+        assertEquals(MSG.SUCESSO_EXCLUIRCMOVIMENTACAO.toString(), resumo.obterTexto(By.xpath("//android.widget.TextView[@text='Movimentação removida com sucesso!']")));
+    }
 
 
 

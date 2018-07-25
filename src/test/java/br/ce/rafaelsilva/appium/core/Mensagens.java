@@ -15,6 +15,12 @@ public class Mensagens {
             }
         },
 
+        SUCESSO_EXCLUIRCMOVIMENTACAO{
+            public String toString(){
+                return "Movimentação removida com sucesso!";
+            }
+        },
+
         SUCESSO_MOVIMENTACAO{
             public String toString(){
                 return "Movimentação cadastrada com sucesso";
